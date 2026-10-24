@@ -22,6 +22,12 @@ ambiguous target aliases needed filesystem identity checks, and malformed output
 paths needed explicit validation rather than relying on platform-specific Path
 behavior. Their regression tests remain in the suite.
 
+The first CI run also exposed a test-only platform assumption: macOS resolves
+`/var` through `/private/var`, and Windows runners may start with an 8.3 short
+temporary-directory path. The absolute-output assertion now requires an absolute
+path, actual same-file identity and the expected bytes instead of comparing two
+different spellings. The production canonicalization contract is unchanged.
+
 The tool validates paths, not audio identity or decodability. Concurrent library
 changes can invalidate a completed preflight. See the README for filesystem
 requirements and exact unsupported inputs. Actions contains the authoritative

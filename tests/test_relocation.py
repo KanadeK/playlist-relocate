@@ -177,7 +177,11 @@ class RelocationTests(unittest.TestCase):
 
     def test_absolute_output(self):
         line = self.plan(absolute=True).content.decode().splitlines()[-1]
-        self.assertEqual(Path(line), self.library / "Artist" / "Tone.wav")
+        actual = Path(line)
+        expected = self.library / "Artist" / "Tone.wav"
+        self.assertTrue(actual.is_absolute())
+        self.assertTrue(actual.samefile(expected))
+        self.assertEqual(actual.read_bytes(), b"audio fixture")
 
     def test_blank_lines_crlf_and_bom(self):
         self.source.write_bytes(b"\xef\xbb\xbf#EXTM3U\r\n\r\nM:\\Music\\Artist\\Tone.wav\r\n")
