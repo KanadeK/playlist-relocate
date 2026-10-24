@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "playlist-relocate"
+version = "0.1.0"
+description = "Preview and safely relocate local M3U playlists using explicit mount maps."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "KanadeK"}]
+dependencies = []
+keywords = ["m3u", "playlist", "migration", "local-first"]
+classifiers = ["Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Operating System :: OS Independent", "Topic :: Multimedia :: Sound/Audio"]
+
+[project.urls]
+Homepage = "https://github.com/KanadeK/playlist-relocate"
+Issues = "https://github.com/KanadeK/playlist-relocate/issues"
+
+[project.scripts]
+playlist-relocate = "playlist_relocate.cli:main"
+
+[project.optional-dependencies]
+dev = ["build==1.6.1", "ruff==0.17.2", "coverage==7.17.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.coverage.run]
+branch = true
+source = ["playlist_relocate"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 85

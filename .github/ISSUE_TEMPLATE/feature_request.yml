@@ -1,0 +1,10 @@
+name: Feature request
+description: Describe a real workflow the tool cannot currently complete
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: User scenario and acceptance criterion
+      description: Explain the concrete input, desired outcome, and current workaround.
+    validations:
+      required: true

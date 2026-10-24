@@ -1,0 +1,17 @@
+name: Bug report
+description: Report a reproducible failure using synthetic inputs
+title: "Bug: "
+body:
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include version, OS, command and small synthetic inputs. Exclude private content.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
